@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Trophy, Radio, Flame, ArrowUpRight, Calendar, Image as ImageIcon } from 'lucide-react';
 import { getWorldCupData } from '@/lib/worldcup';
+import { teamBadge } from '@/lib/country-flags';
 
 /**
  * FIFA-specific extras rendered on /games/fifa.
@@ -28,6 +29,42 @@ export default async function FIFAExtras() {
 
   return (
     <>
+      {/* ───── FIFA official banner ───── */}
+      <section className="relative">
+        <div className="container-x px-5">
+          <div className="relative w-full aspect-[21/9] sm:aspect-[3/1] rounded-2xl overflow-hidden border border-emerald-500/30 ring-1 ring-emerald-500/10">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/games/fifa/hero.jpg"
+              alt="EA Sports FC 25 hero banner"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+            <div className="absolute inset-0 flex items-end p-6 sm:p-10">
+              <div>
+                <div className="text-[10px] sm:text-xs uppercase tracking-[0.35em] text-emerald-300 font-bold flex items-center gap-2">
+                  <Trophy className="h-3.5 w-3.5" />
+                  EA Sports FC 26 · Official Hub
+                </div>
+                <h2
+                  className="display text-4xl sm:text-6xl text-white mt-2 leading-none"
+                  style={{ textShadow: '0 4px 24px rgba(0,0,0,0.7)' }}
+                >
+                  THE WORLD'S GAME
+                </h2>
+                <p className="mt-3 text-sm sm:text-base text-white/85 max-w-2xl">
+                  EA Sports FC 26 launches September 26, 2026 — built around the
+                  first 48-team FIFA World Cup, hosted across the USA, Canada and
+                  Mexico. Career Mode, Ultimate Team, Rush 5v5, FC IQ tactics, and
+                  live World Cup integration on day one.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ───── World Cup live section ───── */}
       <section
         className="section relative overflow-hidden"
@@ -104,10 +141,22 @@ export default async function FIFAExtras() {
                       >
                         <td className="py-2 pr-2">{s.position}</td>
                         <td className="py-2 pr-2">
-                          <span className="font-mono text-[10px] text-white/40 mr-1.5">
-                            {s.team.code ?? ''}
+                          <span className="inline-flex items-center gap-2">
+                            {teamBadge(s.team.crest, s.team.code) ? (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img
+                                src={teamBadge(s.team.crest, s.team.code)!}
+                                alt=""
+                                className="h-4 w-6 object-cover rounded-sm ring-1 ring-white/10"
+                              />
+                            ) : (
+                              <span className="h-4 w-6 rounded-sm bg-white/5" />
+                            )}
+                            <span className="font-mono text-[10px] text-white/40">
+                              {s.team.code ?? ''}
+                            </span>
+                            <span>{s.team.name}</span>
                           </span>
-                          {s.team.name}
                         </td>
                         <td className="py-2 pr-2 text-right tabular-nums">{s.played}</td>
                         <td className="py-2 pr-2 text-right tabular-nums">{s.won}</td>
@@ -137,17 +186,26 @@ export default async function FIFAExtras() {
               {next && next.status !== 'PLACEHOLDER' ? (
                 <div className="space-y-2">
                   {[
-                    { name: next.homeTeam.name, code: next.homeTeam.code, score: next.score?.home ?? null },
-                    { name: next.awayTeam.name, code: next.awayTeam.code, score: next.score?.away ?? null },
-                  ].map((t) => (
-                    <div key={t.name} className="flex items-center gap-3">
-                      <span className="text-[10px] font-mono text-white/45 w-9">{t.code ?? '—'}</span>
-                      <span className="flex-1 text-sm text-white truncate">{t.name}</span>
-                      <span className={`text-xl font-bold tabular-nums ${isLive ? 'text-neon-pink' : 'text-white'}`}>
-                        {t.score ?? '–'}
-                      </span>
-                    </div>
-                  ))}
+                    { name: next.homeTeam.name, code: next.homeTeam.code, crest: next.homeTeam.crest, score: next.score?.home ?? null },
+                    { name: next.awayTeam.name, code: next.awayTeam.code, crest: next.awayTeam.crest, score: next.score?.away ?? null },
+                  ].map((t) => {
+                    const badge = teamBadge(t.crest, t.code);
+                    return (
+                      <div key={t.name} className="flex items-center gap-3">
+                        {badge ? (
+                          /* eslint-disable-next-line @next/next/no-img-element */
+                          <img src={badge} alt="" className="h-4 w-6 object-cover rounded-sm ring-1 ring-white/10 shrink-0" />
+                        ) : (
+                          <span className="h-4 w-6 rounded-sm bg-white/5 shrink-0" />
+                        )}
+                        <span className="text-[10px] font-mono text-white/45 w-9">{t.code ?? '—'}</span>
+                        <span className="flex-1 text-sm text-white truncate">{t.name}</span>
+                        <span className={`text-xl font-bold tabular-nums ${isLive ? 'text-neon-pink' : 'text-white'}`}>
+                          {t.score ?? '–'}
+                        </span>
+                      </div>
+                    );
+                  })}
                   <div className="pt-2 mt-2 border-t border-white/10 text-xs text-white/55 flex items-center gap-1.5">
                     <Calendar className="h-3 w-3" />
                     {new Date(next.utcDate).toLocaleString([], {

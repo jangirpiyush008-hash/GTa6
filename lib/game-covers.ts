@@ -33,6 +33,7 @@ export const covers: Record<string, string | undefined> = {
   'ac-shadows':      '/images/games/ac-shadows-cover.jpg',
   'spider-man-2':    '/images/games/spider-man-2-cover.jpg',
   'stellar-blade':   '/images/games/stellar-blade-cover.jpg',
+  'fifa':            '/images/games/fifa-cover.jpg',
 
   // ── Upcoming — Steam pre-purchase art where available ──
   'silksong':        '/images/games/silksong-cover.jpg',

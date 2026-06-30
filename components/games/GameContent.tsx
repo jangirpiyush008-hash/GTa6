@@ -317,16 +317,35 @@ function ArtworksView({ game, data }: { game: Game; data: NonNullable<GameConten
   return (
     <section className="space-y-8">
       <Intro>{data.intro}</Intro>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {data.entries.map((a) => {
           const inner = (
-            <div className="glass rounded-lg p-4 border h-full" style={{ borderColor: `${game.accent}26` }}>
-              <div className="flex items-start gap-3">
-                <ImageIcon className="h-4 w-4 mt-1 shrink-0" style={{ color: game.accent }} />
-                <div>
-                  <div className="text-white font-semibold">{a.title}</div>
-                  <p className="mt-1 text-sm text-white/65 leading-snug">{a.desc}</p>
+            <div
+              className="glass rounded-lg border h-full overflow-hidden flex flex-col hover:scale-[1.02] transition"
+              style={{ borderColor: `${game.accent}26` }}
+            >
+              {a.image ? (
+                <div className="relative w-full aspect-video bg-black/30">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={a.image}
+                    alt={a.title}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
                 </div>
+              ) : (
+                <div
+                  className="relative w-full aspect-video flex items-center justify-center"
+                  style={{ background: `linear-gradient(135deg, ${game.accent}26, transparent)` }}
+                >
+                  <ImageIcon className="h-8 w-8" style={{ color: `${game.accent}88` }} />
+                </div>
+              )}
+              <div className="p-4 flex-1">
+                <div className="text-white font-semibold">{a.title}</div>
+                <p className="mt-1 text-sm text-white/65 leading-snug">{a.desc}</p>
               </div>
             </div>
           );

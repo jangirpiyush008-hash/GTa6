@@ -3,6 +3,7 @@ import { Bebas_Neue, Inter } from 'next/font/google';
 import './globals.css';
 import WorldCupWidget from '@/components/WorldCupWidget';
 import WelcomePopup from '@/components/WelcomePopup';
+import LiveScoreTicker from '@/components/LiveScoreTicker';
 import { getWorldCupData } from '@/lib/worldcup';
 
 const bebas = Bebas_Neue({
@@ -66,6 +67,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${bebas.variable} ${inter.variable}`}>
       <body className="min-h-screen font-body antialiased">
+        <LiveScoreTicker data={wcData} />
         {children}
         <WorldCupWidget data={wcData} />
         <WelcomePopup />

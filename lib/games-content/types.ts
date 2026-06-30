@@ -62,7 +62,7 @@ export type Cheats = {
 };
 
 /* ── ARTWORKS ── */
-export type ArtworkEntry = { title: string; desc: string; href?: string };
+export type ArtworkEntry = { title: string; desc: string; href?: string; image?: string };
 export type Artworks = { intro: string; entries: ArtworkEntry[] };
 
 /* ── VIDEOS ── */

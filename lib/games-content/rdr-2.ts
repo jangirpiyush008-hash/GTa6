@@ -547,11 +547,11 @@ const content: GameContent = {
     intro:
       'Rockstar released a steady stream of key art across 2017–2018. The pieces below are the iconic promotional plates published on the Newswire and reproduced on physical packaging.',
     entries: [
-      { title: 'Reveal Key Art', desc: 'The first October 2016 silhouette teaser · seven gang members on a ridge.' },
-      { title: 'Yellow Sky Cover Art', desc: 'The final box art · Arthur on horseback against a setting sun.' },
-      { title: 'Saint Denis Cityscape', desc: 'Wide horizontal piece showing the New Orleans-analogue downtown.' },
-      { title: 'Camp at Dusk', desc: 'Painterly piece of the Horseshoe Overlook campfire.' },
-      { title: 'Cougar Hunt', desc: 'Combat art used in pre-launch screenshots.' },
+      { title: 'Reveal Key Art', desc: 'The first October 2016 silhouette teaser · seven gang members on a ridge.', image: '/images/games/rdr-2/shot-1.jpg' },
+      { title: 'Yellow Sky Cover Art', desc: 'The final box art · Arthur on horseback against a setting sun.', image: '/images/games/rdr-2/shot-2.jpg' },
+      { title: 'Saint Denis Cityscape', desc: 'Wide horizontal piece showing the New Orleans-analogue downtown.', image: '/images/games/rdr-2/shot-3.jpg' },
+      { title: 'Camp at Dusk', desc: 'Painterly piece of the Horseshoe Overlook campfire.', image: '/images/games/rdr-2/shot-4.jpg' },
+      { title: 'Cougar Hunt', desc: 'Combat art used in pre-launch screenshots.', image: '/images/games/rdr-2/shot-5.jpg' },
       { title: 'Train Robbery', desc: 'Dynamic key art used in the Trailer 3 marketing push.' },
       { title: 'Sadie Adler Portrait', desc: 'Solo character study released alongside the gang reveal.' },
       { title: 'Saint Denis Carriage Chase', desc: 'Action piece used on the deluxe edition steelbook.' },

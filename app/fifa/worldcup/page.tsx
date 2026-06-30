@@ -3,6 +3,7 @@ import Link from 'next/link';
 import MegaNav from '@/components/MegaNav';
 import Footer from '@/components/Footer';
 import { getWorldCupData } from '@/lib/worldcup';
+import { teamBadge } from '@/lib/country-flags';
 import { Trophy, Radio, ArrowLeft, Calendar, Info } from 'lucide-react';
 
 export const metadata: Metadata = {
@@ -125,28 +126,31 @@ export default async function WorldCupPage() {
                       </span>
                     </div>
                     <div className="space-y-1.5">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-white/45 w-9">
-                          {m.homeTeam.code ?? '—'}
-                        </span>
-                        <span className="flex-1 text-sm text-white truncate">
-                          {m.homeTeam.name}
-                        </span>
-                        <span className={`text-lg font-bold tabular-nums ${live ? 'text-neon-pink' : 'text-white'}`}>
-                          {m.score?.home ?? '–'}
-                        </span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-white/45 w-9">
-                          {m.awayTeam.code ?? '—'}
-                        </span>
-                        <span className="flex-1 text-sm text-white truncate">
-                          {m.awayTeam.name}
-                        </span>
-                        <span className={`text-lg font-bold tabular-nums ${live ? 'text-neon-pink' : 'text-white'}`}>
-                          {m.score?.away ?? '–'}
-                        </span>
-                      </div>
+                      {[
+                        { side: 'home' as const, team: m.homeTeam, score: m.score?.home },
+                        { side: 'away' as const, team: m.awayTeam, score: m.score?.away },
+                      ].map(({ side, team, score }) => {
+                        const badge = teamBadge(team.crest, team.code);
+                        return (
+                          <div key={side} className="flex items-center gap-2">
+                            {badge ? (
+                              /* eslint-disable-next-line @next/next/no-img-element */
+                              <img
+                                src={badge}
+                                alt=""
+                                className="h-4 w-6 object-cover rounded-sm shrink-0 ring-1 ring-white/10"
+                              />
+                            ) : (
+                              <span className="h-4 w-6 rounded-sm bg-white/5 shrink-0" />
+                            )}
+                            <span className="text-[10px] font-mono text-white/45 w-9">{team.code ?? '—'}</span>
+                            <span className="flex-1 text-sm text-white truncate">{team.name}</span>
+                            <span className={`text-lg font-bold tabular-nums ${live ? 'text-neon-pink' : 'text-white'}`}>
+                              {score ?? '–'}
+                            </span>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 );
@@ -195,10 +199,22 @@ export default async function WorldCupPage() {
                         >
                           <td className="py-1 pr-2">{s.position}</td>
                           <td className="py-1 pr-2 truncate">
-                            <span className="font-mono text-[10px] text-white/40 mr-1.5">
-                              {s.team.code ?? ''}
+                            <span className="inline-flex items-center gap-2">
+                              {teamBadge(s.team.crest, s.team.code) ? (
+                                /* eslint-disable-next-line @next/next/no-img-element */
+                                <img
+                                  src={teamBadge(s.team.crest, s.team.code)!}
+                                  alt=""
+                                  className="h-4 w-6 object-cover rounded-sm ring-1 ring-white/10"
+                                />
+                              ) : (
+                                <span className="h-4 w-6 rounded-sm bg-white/5" />
+                              )}
+                              <span className="font-mono text-[10px] text-white/40">
+                                {s.team.code ?? ''}
+                              </span>
+                              <span>{s.team.name}</span>
                             </span>
-                            {s.team.name}
                           </td>
                           <td className="py-1 pr-2 text-right tabular-nums">{s.played}</td>
                           <td className="py-1 pr-2 text-right tabular-nums">
