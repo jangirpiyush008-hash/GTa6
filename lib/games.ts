@@ -308,9 +308,9 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'primary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters', 'weapons',
-      'map', 'news', 'features', 'missions', 'activities',
-      'artworks', 'videos', 'soundtrack',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
+      'weapons', 'map', 'news', 'features', 'missions',
+      'activities', 'artworks', 'videos', 'soundtrack',
     ],
   },
   {
@@ -352,9 +352,9 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'primary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters', 'weapons',
-      'map', 'news', 'features', 'animals', 'missions',
-      'activities', 'artworks', 'videos', 'soundtrack',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
+      'weapons', 'map', 'news', 'features', 'animals',
+      'missions', 'activities', 'artworks', 'videos', 'soundtrack',
     ],
   },
   {
@@ -374,9 +374,9 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'secondary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters', 'weapons',
-      'map', 'news', 'features', 'missions', 'activities',
-      'artworks', 'videos', 'soundtrack',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
+      'weapons', 'map', 'news', 'features', 'missions',
+      'activities', 'artworks', 'videos', 'soundtrack',
     ],
   },
   {
@@ -414,7 +414,7 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'primary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
       'map', 'news', 'features', 'activities',
       'artworks', 'videos', 'soundtrack',
     ],

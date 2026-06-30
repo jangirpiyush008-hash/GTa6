@@ -251,6 +251,122 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'EA Sports FC has the lowest hardware floor in this catalog — football sims target stable 60 fps on 90 % of installed hardware. The 2026 cycle (FC 26) adds Switch 2 + maintains last-gen support for casual buyers.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS4 · PS5 (native · the recommended build)',
+        best: 'PS5: native 4K 60 fps · cross-play with PC / Xbox · HyperMotion V animations',
+        storage: '70 GB (FC 26)',
+        notes: [
+          'PS4 version uses last-gen engine · no HyperMotion · cross-play limited.',
+          'No PS5 Pro-specific enhancements — engine already locked at 60 fps target.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox One · Xbox Series X|S (native)',
+        best: 'Xbox Series X: native 4K 60 fps · full HyperMotion V',
+        storage: '70 GB',
+        notes: [
+          'Xbox One version on last-gen engine — same restrictions as PS4 path.',
+          'Series S: 1440p 60 fps · all gameplay features identical to Series X.',
+        ],
+      },
+      {
+        console: 'Switch',
+        versions: 'Nintendo Switch 2 (FC 26 launch · Switch 2 only)',
+        best: 'Docked: 1080p 60 fps · Handheld: 720p 60 fps',
+        storage: '30 GB',
+        notes: [
+          'Original Switch versions sunset · FC 25 was the last release.',
+          'Switch 2 build matches Xbox Series S fidelity.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i5-6600K · AMD Ryzen 5 1600',
+      gpu: 'NVIDIA GTX 1050 Ti 4 GB · AMD RX 570 4 GB',
+      ram: '8 GB',
+      vram: '4 GB',
+      storage: '70 GB · SSD strongly recommended',
+      expectedFps: '1080p 60 fps low',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i7-9700K · AMD Ryzen 5 5600X',
+      gpu: 'NVIDIA RTX 2070 8 GB · AMD RX 5700 XT 8 GB',
+      ram: '12 GB',
+      vram: '8 GB',
+      storage: '70 GB NVMe SSD',
+      expectedFps: '4K 60 fps high · or 1440p 144 fps ultra',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 700,
+        targets: '1080p 144 fps ultra · cross-play smooth · streaming-ready',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '16 GB DDR5-5200 (2×8)',           priceUSD: 60 },
+          { label: 'GPU',  part: 'AMD RX 6600 8 GB',                priceUSD: 180 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair CV550 (550W Bronze)',     priceUSD: 60 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 40 },
+        ],
+        notes: 'FC is light · this build hits 200+ fps · perfect for high-refresh competitive play.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1180,
+        targets: '4K 144 fps ultra · zero input lag · stream-and-play comfortably',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',                priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 (2×16)',           priceUSD: 120 },
+          { label: 'GPU',  part: 'AMD RX 7700 XT 12 GB',             priceUSD: 420 },
+          { label: 'SSD',  part: '1 TB WD SN850X NVMe',              priceUSD: 90 },
+          { label: 'PSU',  part: 'Corsair RM650e (650W Gold)',       priceUSD: 80 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 70 },
+          { label: 'Misc', part: '240Hz 1440p monitor (highly recommended)', priceUSD: 200 },
+        ],
+        notes: 'Monitor matters more than GPU for fighting/sports games · 240Hz is the EA Sports FC competitive standard.',
+      },
+      {
+        tier: 'Competitive',
+        totalUSD: 2050,
+        targets: '4K 240 fps · LAN-tournament-ready · zero stutter even at peak FUT volume',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9800X3D',              priceUSD: 480 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5070 12 GB',            priceUSD: 550 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 280',    priceUSD: 110 },
+          { label: 'Pad',  part: 'PS5 DualSense Edge (most-used FUT pad)', priceUSD: 200 },
+        ],
+        notes: '9800X3D\'s X3D cache delivers the best frame-pacing for fighting / sports titles · marginal for FC but matters in tournaments.',
+      },
+    ],
+    completion: {
+      mainStory: 'N/A · no campaign',
+      mainAndExtras: '~40h Career Mode season',
+      completionist: 'Infinite · Ultimate Team grind is the long tail',
+      notes: [
+        'Career Mode (player or manager) is the closest thing to a story · 1 season ~40 hours.',
+        'Ultimate Team / Pro Clubs / Rush 5v5 have no end state · play forever.',
+        'Annual reset · everyone restarts each September with the new edition.',
+      ],
+    },
+  },
 };
 
 export default content;

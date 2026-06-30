@@ -378,6 +378,120 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'Hogwarts Legacy is GPU + VRAM heavy thanks to the dense castle environments and the spell-particle effects. The Switch port (Nov 2023) trades fidelity for portability — significantly cut-down from console builds.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS4 · PS4 Pro · PS5 (native) · PS5 Pro (enhanced)',
+        best: 'PS5 Pro: 4K 60 fps with ray-traced shadows · the showcase mode',
+        storage: '85 GB',
+        notes: [
+          'PS5 Pro patch (Sept 2024) adds dedicated Pro Fidelity mode.',
+          'PS4 / PS4 Pro builds shipped April 2023 · reduced texture pool.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox One · Xbox One X · Xbox Series X|S (native)',
+        best: 'Xbox Series X: 4K 30 fps Fidelity · 1440p 60 fps Performance',
+        storage: '85 GB',
+        notes: [
+          'Series S: 1440p 30 fps Fidelity or 1080p 60 fps Performance.',
+          'Xbox One versions delayed to May 2023 · run at 1080p 30 fps.',
+        ],
+      },
+      {
+        console: 'Switch',
+        versions: 'Nintendo Switch (Nov 2023 · standalone build by Avalanche)',
+        best: 'Docked: 720p dynamic 30 fps · Handheld: 540p dynamic 30 fps',
+        storage: '15 GB cartridge + 17 GB system download',
+        notes: [
+          'Reduced beast vivarium count, smaller crowds, simplified spell FX.',
+          'No multiplayer features differ from the full version (none exist).',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 64-bit',
+      cpu: 'Intel Core i5-6600 · AMD Ryzen 5 1400',
+      gpu: 'NVIDIA GTX 960 4 GB · AMD RX 470 4 GB',
+      ram: '16 GB',
+      vram: '4 GB',
+      storage: '85 GB · SSD strongly recommended',
+      expectedFps: '720p 30 fps low',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i7-8700 · AMD Ryzen 5 3600',
+      gpu: 'NVIDIA GTX 1080 Ti 11 GB · AMD RX 5700 XT 8 GB',
+      ram: '16 GB',
+      vram: '8 GB',
+      storage: '85 GB NVMe SSD',
+      expectedFps: '1440p 60 fps high · ray tracing off',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 940,
+        targets: '1080p 60 fps high · castle interiors stable · no RT',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '32 GB DDR5-5200 (2×16)',          priceUSD: 110 },
+          { label: 'GPU',  part: 'AMD RX 7600 XT 16 GB',            priceUSD: 320 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair CV650 (650W Bronze)',     priceUSD: 70 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 80 },
+        ],
+        notes: '16 GB VRAM matters — Hogwarts Legacy chokes 8 GB cards in Hogsmeade at high textures.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1480,
+        targets: '1440p 90 fps ultra · ray-traced shadows on · castle smooth',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',                priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 CL30',             priceUSD: 130 },
+          { label: 'GPU',  part: 'AMD RX 7800 XT 16 GB',             priceUSD: 500 },
+          { label: 'SSD',  part: '2 TB WD SN850X NVMe',              priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 65 },
+        ],
+        notes: 'RX 7800 XT\'s 16 GB VRAM clears every texture pool · no streaming hitches.',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2400,
+        targets: '4K 60 fps ultra + full RT + DLAA · plays Hogwarts Legacy 2 (2027)',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9700X',                priceUSD: 380 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5080 16 GB',            priceUSD: 1100 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM850e (850W Gold)',       priceUSD: 120 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 280',    priceUSD: 110 },
+        ],
+        notes: 'RTX 5080 path traces Hogwarts Castle dining hall at 60 fps · the marquee scene.',
+      },
+    ],
+    completion: {
+      mainStory: '35h',
+      mainAndExtras: '72h',
+      completionist: '108h',
+      notes: [
+        'Completionist requires 100 % field guide + all beasts + all Merlin Trials · the post-game grind.',
+        'House-specific quests add 1–3 hours depending on which you pick (Slytherin = most extra content).',
+      ],
+    },
+  },
 };
 
 export default content;

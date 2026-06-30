@@ -329,6 +329,100 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'Spider-Man 2 is the simplest requirements page in the catalog — PS5 exclusive at launch, with a PC port confirmed by Insomniac for 2026 (no firm date yet). All hardware questions reduce to "do you own a PS5?"',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS5 (native · disc or download) · PS5 Pro (enhanced)',
+        best: 'PS5 Pro: 4K 60 fps Fidelity with PSSR upscaling + ray-traced reflections',
+        storage: '98 GB',
+        notes: [
+          'No PS4 version · no plans for one.',
+          'Free Pro patch added Nov 2024 · dedicated Pro performance + fidelity modes.',
+          'Save-data import from Spider-Man (2018) + Miles Morales adds minor easter eggs.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Not available · Sony first-party exclusive',
+        storage: 'N/A',
+        notes: [
+          'No Xbox release · Insomniac is a Sony-owned studio.',
+          'No Game Pass or Xbox Series release planned.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'PC port still in development · Nixxes-led port confirmed for 2026',
+      cpu: 'TBD · expect Intel Core i3-8100 / AMD Ryzen 3 3100 floor (matches 2018 + Miles ports)',
+      gpu: 'TBD · expect NVIDIA GTX 1650 / AMD RX 5500 XT floor',
+      ram: '16 GB (expected)',
+      vram: '4 GB (expected)',
+      storage: '100 GB (expected)',
+      expectedFps: 'TBD — based on Nixxes track record: 1080p 30 fps low at min spec',
+      notes: 'Final spec sheet will publish 4–6 weeks before launch · these are projections based on the 2018 and Miles ports.',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit (when port lands)',
+      cpu: 'TBD · expect Intel i5-11400 / AMD Ryzen 5 5600 tier',
+      gpu: 'TBD · expect NVIDIA RTX 3070 / AMD RX 6800 tier',
+      ram: '16 GB',
+      vram: '8 GB',
+      storage: '100 GB NVMe SSD (DirectStorage required for ray tracing)',
+      expectedFps: '1440p 60 fps high (projection)',
+      notes: 'Spider-Man (2018) and Miles Morales both used Nixxes\' DirectStorage path heavily — expect the same here.',
+    },
+    builds: [
+      {
+        tier: 'Get a PS5 instead',
+        totalUSD: 499,
+        targets: 'Native 4K 60 fps · zero hardware decisions · plays it today',
+        parts: [
+          { label: 'Console', part: 'PlayStation 5 Slim (disc) — bundled with Spider-Man 2', priceUSD: 499 },
+        ],
+        notes: 'Honest answer for 2026 · the PC port isn\'t out yet · a PS5 is the only way to play.',
+      },
+      {
+        tier: 'PS5 Pro (best play)',
+        totalUSD: 699,
+        targets: '4K 60 fps with PSSR + ray-traced reflections · the showcase build',
+        parts: [
+          { label: 'Console', part: 'PlayStation 5 Pro · the Spider-Man 2 reference platform', priceUSD: 699 },
+        ],
+        notes: 'Pro\'s GPU uplift makes the Fidelity mode hit 60 fps · base PS5 caps at 30 fps with RT.',
+      },
+      {
+        tier: 'PC (when port lands)',
+        totalUSD: 1480,
+        targets: '1440p 90 fps ultra · RT reflections + DLSS Quality (projection)',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',                priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 CL30',             priceUSD: 130 },
+          { label: 'GPU',  part: 'AMD RX 7800 XT 16 GB',             priceUSD: 500 },
+          { label: 'SSD',  part: '2 TB WD SN850X NVMe',              priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 65 },
+        ],
+        notes: 'Same build as RDR 2 Recommended · works for every modern PS5 port from Nixxes.',
+      },
+    ],
+    completion: {
+      mainStory: '18h',
+      mainAndExtras: '26h',
+      completionist: '40h',
+      notes: [
+        'Shortest campaign in the trilogy · tightest pacing.',
+        'New Game+ (added March 2024) adds ~12 hours for a second run with carried suits + skills.',
+        '100 % completion includes all Spider-Bots (42), Hunter Bases (13), and side mission chains.',
+      ],
+    },
+  },
 };
 
 export default content;

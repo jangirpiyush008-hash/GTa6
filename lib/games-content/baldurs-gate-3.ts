@@ -332,6 +332,113 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'BG3 is current-gen only on consoles — no PS4 / Xbox One ports. The PC side scales surprisingly low because the engine is turn-based: even modest hardware handles the cinematic cutscenes since they\'re not real-time combat.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS5 (native · physical or digital)',
+        best: 'PS5 Pro: 4K 60 fps Fidelity mode with split-screen co-op',
+        storage: '150 GB',
+        notes: [
+          'Local split-screen co-op for 2 on PS5 · base PS5 limited to 30 fps in split-screen.',
+          'Cross-save with PC via Larian account (Patch 7+).',
+          'No PS4 version planned.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox Series X|S (native)',
+        best: 'Xbox Series X: 4K 30 fps Fidelity or 1440p 60 fps Performance',
+        storage: '150 GB',
+        notes: [
+          'Series S: single-player only — no split-screen.',
+          'Series X supports local split-screen co-op for 2.',
+          'No Xbox One version possible — Microsoft policy waiver granted for the Series S restriction.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 64-bit',
+      cpu: 'Intel Core i5-4690 · AMD FX 4350',
+      gpu: 'NVIDIA GTX 970 4 GB · AMD RX 480 4 GB',
+      ram: '8 GB',
+      vram: '4 GB',
+      storage: '150 GB SSD',
+      expectedFps: '1080p 30 fps low',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i7-8700K · AMD Ryzen 5 3600',
+      gpu: 'NVIDIA RTX 2060 Super 8 GB · AMD RX 5700 XT 8 GB',
+      ram: '16 GB',
+      vram: '8 GB',
+      storage: '150 GB NVMe SSD',
+      expectedFps: '1440p 60 fps high',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 880,
+        targets: '1080p 60 fps high · 4-player co-op host without issues',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '32 GB DDR5-5200 (2×16)',          priceUSD: 110 },
+          { label: 'GPU',  part: 'Intel Arc B580 12 GB',            priceUSD: 280 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair CV650 (650W Bronze)',     priceUSD: 70 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 60 },
+        ],
+        notes: 'CPU matters more than GPU here — BG3\'s Act 3 Lower City is heavily CPU-bound.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1390,
+        targets: '1440p 90 fps ultra · stable in Act 3 Lower City crowds',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 7800X3D',              priceUSD: 380 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 CL30',             priceUSD: 130 },
+          { label: 'GPU',  part: 'AMD RX 7700 XT 12 GB',             priceUSD: 420 },
+          { label: 'SSD',  part: '1 TB WD SN850X NVMe',              priceUSD: 90 },
+          { label: 'PSU',  part: 'Corsair RM650e (650W Gold)',       priceUSD: 80 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 45 },
+        ],
+        notes: '7800X3D is the BG3 hero — Act 3 frame-rate problems disappear with X3D cache.',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2240,
+        targets: '4K 120 fps ultra · multi-monitor for online co-op',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9800X3D',              priceUSD: 480 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5070 Ti 16 GB',         priceUSD: 750 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 280',    priceUSD: 110 },
+        ],
+        notes: 'BG3 has no ray tracing · this build is overkill but futures-proofs for 2027 RPGs.',
+      },
+    ],
+    completion: {
+      mainStory: '80h',
+      mainAndExtras: '130h',
+      completionist: '200h',
+      notes: [
+        'Dark Urge or Origin character runs each add ~20 hours of unique dialogue.',
+        'Honor Mode adds ~10 hours of caution-padding · perma-death pressure.',
+        '4-player co-op runs go +30% wall-clock time from coordination.',
+      ],
+    },
+  },
 };
 
 export default content;
