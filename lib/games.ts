@@ -395,7 +395,11 @@ const released: Game[] = [
     accent: '#991b1b',
     isUpcoming: false,
     tier: 'secondary',
-    categoriesEnabled: OVERVIEW_ONLY,
+    categoriesEnabled: [
+      'overview', 'news', 'features', 'editions', 'screenshots', 'requirements',
+      'map', 'characters', 'weapons', 'missions',
+      'artworks', 'videos', 'soundtrack',
+    ],
   },
   {
     id: 'fifa',
@@ -457,7 +461,11 @@ const released: Game[] = [
     accent: '#ea580c',
     isUpcoming: false,
     tier: 'secondary',
-    categoriesEnabled: OVERVIEW_ONLY,
+    categoriesEnabled: [
+      'overview', 'news', 'features', 'editions', 'screenshots', 'requirements',
+      'map', 'characters', 'weapons', 'missions',
+      'artworks', 'videos',
+    ],
   },
   {
     id: 'black-myth-wukong',
@@ -475,7 +483,11 @@ const released: Game[] = [
     accent: '#c2410c',
     isUpcoming: false,
     tier: 'secondary',
-    categoriesEnabled: OVERVIEW_ONLY,
+    categoriesEnabled: [
+      'overview', 'news', 'features', 'editions', 'screenshots', 'requirements',
+      'map', 'characters', 'weapons', 'missions',
+      'artworks', 'videos', 'soundtrack',
+    ],
   },
   {
     id: 'ff7-rebirth',

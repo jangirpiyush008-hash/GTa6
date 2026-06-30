@@ -17,17 +17,23 @@ import hogwartsLegacy from './hogwarts-legacy';
 import spiderMan2 from './spider-man-2';
 import diabloIv from './diablo-iv';
 import fifa from './fifa';
+import re4Remake from './re4-remake';
+import helldivers2 from './helldivers-2';
+import blackMythWukong from './black-myth-wukong';
 
 export const content: Record<string, GameContent | undefined> = {
-  'rdr-2':           rdr2,
-  'gta-v':           gtaV,
-  'elden-ring':      eldenRing,
-  'cyberpunk-2077':  cyberpunk2077,
-  'baldurs-gate-3':  bg3,
-  'hogwarts-legacy': hogwartsLegacy,
-  'spider-man-2':    spiderMan2,
-  'diablo-iv':       diabloIv,
-  'fifa':            fifa,
+  'rdr-2':              rdr2,
+  'gta-v':              gtaV,
+  'elden-ring':         eldenRing,
+  'cyberpunk-2077':     cyberpunk2077,
+  'baldurs-gate-3':     bg3,
+  'hogwarts-legacy':    hogwartsLegacy,
+  'spider-man-2':       spiderMan2,
+  'diablo-iv':          diabloIv,
+  'fifa':               fifa,
+  're4-remake':         re4Remake,
+  'helldivers-2':       helldivers2,
+  'black-myth-wukong':  blackMythWukong,
 };
 
 export function getGameContent(slug: string): GameContent | undefined {
