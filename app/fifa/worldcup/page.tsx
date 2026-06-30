@@ -5,6 +5,20 @@ import Footer from '@/components/Footer';
 import { getWorldCupData } from '@/lib/worldcup';
 import { teamBadge } from '@/lib/country-flags';
 import { Trophy, Radio, ArrowLeft, Calendar, Info } from 'lucide-react';
+import { worldCupEventLd, breadcrumbLd, faqLd, jsonLdScript, type FAQ } from '@/lib/jsonld';
+
+const WC_FAQS: FAQ[] = [
+  { q: 'When is the 2026 FIFA World Cup?',
+    a: 'June 11 – July 19, 2026. Opening match at Estadio Azteca, Mexico City. Final at MetLife Stadium, East Rutherford, New Jersey on July 19, 2026.' },
+  { q: 'How many teams play in the 2026 World Cup?',
+    a: '48 teams — the first expanded format. They are drawn into 12 groups of 4. The top two from each group plus the eight best third-placed teams advance to a 32-team Round of 32 knockout stage.' },
+  { q: 'Which countries are hosting the 2026 World Cup?',
+    a: 'United States, Canada, and Mexico — the first three-country co-hosting in World Cup history. 11 host cities in the US, 2 in Canada (Toronto, Vancouver), and 3 in Mexico (Guadalajara, Mexico City, Monterrey).' },
+  { q: 'Where is the 2026 World Cup final?',
+    a: 'MetLife Stadium in East Rutherford, New Jersey (the New York metro area). Kickoff: July 19, 2026.' },
+  { q: 'How can I watch World Cup 2026 live scores?',
+    a: 'This page refreshes every 5 minutes via the public ESPN API. The bottom-left widget on every page also shows the current or next match with a live countdown timer. A scrolling ticker at the top of every page runs today\'s scores after you dismiss the welcome popup.' },
+];
 
 export const metadata: Metadata = {
   title: 'FIFA World Cup 2026 — Live Scores, Groups & Standings · GTAVI.GUIDE',
@@ -23,8 +37,28 @@ export const revalidate = 300; // re-fetch the live API every 5 minutes
 export default async function WorldCupPage() {
   const data = await getWorldCupData();
 
+  const eventSchema = worldCupEventLd();
+  const breadcrumbSchema = breadcrumbLd([
+    { name: 'Home', href: '/' },
+    { name: 'EA Sports FC / FIFA', href: '/games/fifa' },
+    { name: 'World Cup 2026 Live', href: '/fifa/worldcup' },
+  ]);
+  const faqSchema = faqLd(WC_FAQS);
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(eventSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(faqSchema) }}
+      />
       <MegaNav />
 
       {/* Hero */}

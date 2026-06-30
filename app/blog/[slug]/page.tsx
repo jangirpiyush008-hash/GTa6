@@ -8,6 +8,7 @@ import BlogBody from '@/components/BlogBody';
 import { allSlugs, getPost, relatedPosts } from '@/lib/blog';
 import { ArrowLeft, Clock, ExternalLink, Calendar } from 'lucide-react';
 import { LINKS } from '@/lib/links';
+import { articleLd, breadcrumbLd, jsonLdScript } from '@/lib/jsonld';
 
 export function generateStaticParams() {
   return allSlugs.map((slug) => ({ slug }));
@@ -48,8 +49,29 @@ export default async function BlogPostPage(props: {
   if (!post) notFound();
   const related = relatedPosts(slug);
 
+  const articleSchema = articleLd({
+    title: post.title,
+    description: post.excerpt,
+    slug: post.slug,
+    datePublished: post.date,
+    image: post.hero,
+  });
+  const breadcrumbSchema = breadcrumbLd([
+    { name: 'Home', href: '/' },
+    { name: 'Blog', href: '/blog' },
+    { name: post.title, href: `/blog/${post.slug}` },
+  ]);
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(breadcrumbSchema) }}
+      />
       <MegaNav />
 
       {/* Hero */}

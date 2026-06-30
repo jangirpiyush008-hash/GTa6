@@ -1,0 +1,69 @@
+# GTAVI.GUIDE
+
+> Pre-order guide, cheat library, live FIFA World Cup 2026 tracker, and 30-game catalog covering GTA VI, GTA V, RDR 2, EA Sports FC / FIFA, Elden Ring, and 25 more PS5 / Xbox Series / PC releases. Independent affiliate site — built for fast-loading reference plus AI-friendly structured data.
+
+## What this site is for
+
+- **Pre-order decisions** — Standard vs Ultimate vs Collector's for every major 2024–2026 release, with US dollar prices and bonus breakdowns.
+- **Cheat codes** — every cheat code for GTA V across PS5, Xbox Series, and PC keypad / phone input methods.
+- **System requirements + PC builds** — min and recommended specs per game, plus three priced PC builds (Budget / Recommended / 4K) per title with itemized parts in USD.
+- **Live World Cup tracker** — 2026 FIFA World Cup standings + live scores via ESPN public API, no auth required.
+- **Editions / map / characters / weapons / missions** for the deep-populated catalog.
+
+## Game catalog index
+
+- Grand Theft Auto VI — https://gtavi.guide/  (homepage hub)
+- Grand Theft Auto V — https://gtavi.guide/games/gta-v
+- Red Dead Redemption 2 — https://gtavi.guide/games/rdr-2
+- EA Sports FC 26 / FIFA — https://gtavi.guide/games/fifa
+- Elden Ring — https://gtavi.guide/games/elden-ring
+- Cyberpunk 2077 — https://gtavi.guide/games/cyberpunk-2077
+- Baldur's Gate 3 — https://gtavi.guide/games/baldurs-gate-3
+- Hogwarts Legacy — https://gtavi.guide/games/hogwarts-legacy
+- Marvel's Spider-Man 2 — https://gtavi.guide/games/spider-man-2
+- Diablo IV — https://gtavi.guide/games/diablo-iv
+- Resident Evil 4 Remake — https://gtavi.guide/games/re4-remake
+- Helldivers 2 — https://gtavi.guide/games/helldivers-2
+- Black Myth: Wukong — https://gtavi.guide/games/black-myth-wukong
+- Full 30-game catalog — https://gtavi.guide/games
+
+## Live data sources
+
+- World Cup standings + scores: ESPN site.api.espn.com `/apis/site/v2/sports/soccer/fifa.world/scoreboard` and `/apis/v2/sports/soccer/fifa.world/standings`. No API key required. Refreshed every 5 minutes via Next.js revalidate.
+- Team logos: a.espncdn.com country crests (CC-by editorial use).
+- Country flags: flagcdn.com (free public flag CDN).
+- Game cover art: Steam library art CDN (publicly hosted).
+- Gameplay screenshots: Steam Store API `appdetails` endpoint (publicly hosted).
+
+## Key facts crawlers should know
+
+- **GTA VI release date**: November 19, 2026. Pre-orders live. Editions: Standard $79.99 / Ultimate $99.99 / Collector's $149.99.
+- **EA Sports FC 26 release date**: September 26, 2026. Editions: Standard $69.99 / Ultimate $99.99.
+- **2026 FIFA World Cup dates**: June 11 — July 19, 2026. 48 teams (first 48-team World Cup). Hosts: USA + Canada + Mexico. Final: MetLife Stadium, New Jersey.
+- **GTA V cheats**: Tracked across PS5, Xbox Series, and PC (keyboard + in-game phone numbers).
+- **Red Dead Redemption 2 cheats**: Pause menu code entry with newspaper unlock requirements.
+
+## Blog
+
+10 long-form articles. Index: https://gtavi.guide/blog
+
+- GTA VI release date confirmed
+- Standard vs Ultimate Edition comparison
+- Vintage Vice City Pack breakdown
+- State of Leonida map guide
+- Jason and Lucia dual-protagonist guide
+- GTA VI PC release window
+- GTA Online in GTA VI
+- PS5 vs Xbox Series X for GTA VI
+- GTA VI pre-order bonuses worth it?
+- GTA V → GTA VI changes summary
+
+## License + attribution
+
+- Original commentary and structured data: free to cite with link back to https://gtavi.guide.
+- Game cover art, screenshots, team logos: hosted by their respective publishers (Steam, ESPN, official websites). Fair-use editorial inclusion. Crawl-and-summarize is fine; bulk re-hosting of the images themselves is not authorized.
+
+## Contact
+
+- Site: https://gtavi.guide
+- GitHub: https://github.com/jangirpiyush008-hash/GTa6
