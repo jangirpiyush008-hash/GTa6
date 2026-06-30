@@ -8,11 +8,12 @@ import type { LucideIcon } from 'lucide-react';
 import {
   Book, Newspaper, Sparkles, Package, Image as ImageIcon, Map,
   Car, Crosshair, Users, PawPrint, ListChecks, Trophy,
-  Home, Star, Gamepad2, Monitor, Brush, Video, Music,
+  Home, Star, Gamepad2, Monitor, Brush, Video, Music, Cpu,
 } from 'lucide-react';
 
 export type CategoryId =
   | 'overview' | 'news' | 'features' | 'editions' | 'screenshots'
+  | 'requirements'
   | 'map' | 'vehicles' | 'weapons' | 'characters' | 'animals'
   | 'missions' | 'activities' | 'properties'
   | 'cheats-ps5' | 'cheats-xbox' | 'cheats-pc'
@@ -32,6 +33,7 @@ export const categories: Category[] = [
   { id: 'features',    label: 'Features',    icon: Sparkles,    column: 1 },
   { id: 'editions',    label: 'Game Editions', icon: Package,   column: 1 },
   { id: 'screenshots', label: 'Screenshots', icon: ImageIcon,   column: 1 },
+  { id: 'requirements',label: 'Requirements + PC Build', icon: Cpu, column: 1 },
   { id: 'map',         label: 'Map Locations', icon: Map,       column: 1 },
   { id: 'vehicles',    label: 'Vehicles',    icon: Car,         column: 1 },
   { id: 'weapons',     label: 'Weapons',     icon: Crosshair,   column: 1 },

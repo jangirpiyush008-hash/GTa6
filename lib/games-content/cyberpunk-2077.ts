@@ -361,6 +361,112 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'Cyberpunk 2077 is the franchise canary for new GPU generations — every nm-shrink, every DLSS revision, every ray-tracing tier shows up here first. Phantom Liberty requires PS5, Xbox Series, or PC: PS4 and Xbox One cannot run the DLC.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS4 · PS5 (native) · PS5 Pro (enhanced)',
+        best: 'PS5 Pro: 4K 60 fps with hardware ray-traced reflections',
+        storage: '70 GB (base) · 110 GB with Phantom Liberty',
+        notes: [
+          'Phantom Liberty DLC is PS5-only — PS4 cannot run it.',
+          'PS5 Pro patch (Nov 2024) adds dedicated Pro modes.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox One · Xbox Series X|S (native)',
+        best: 'Xbox Series X: 4K 30 fps fidelity or 1440p 60 fps performance',
+        storage: '110 GB with Phantom Liberty',
+        notes: [
+          'Phantom Liberty requires Series X|S — not Xbox One.',
+          'Series S limited to 1440p 30 fps fidelity mode.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i7-6700 · AMD Ryzen 5 1600',
+      gpu: 'NVIDIA GTX 1060 6 GB · AMD RX 580 8 GB · Intel Arc A380',
+      ram: '12 GB',
+      vram: '6 GB',
+      storage: '70 GB SSD',
+      expectedFps: '1080p 30 fps low (no ray tracing)',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel i7-12700 · AMD Ryzen 7 7800X3D',
+      gpu: 'NVIDIA RTX 4070 · AMD RX 7800 XT',
+      ram: '16 GB',
+      vram: '12 GB',
+      storage: '110 GB NVMe SSD',
+      expectedFps: '1440p 60 fps high · ray tracing medium with DLSS/FSR',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 950,
+        targets: '1080p 60 fps high · no ray tracing · FSR Quality',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '32 GB DDR5-5200 (2×16)',          priceUSD: 110 },
+          { label: 'GPU',  part: 'Intel Arc B580 12 GB',            priceUSD: 280 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair RM650e (650W Gold)',      priceUSD: 80 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 50 },
+          { label: 'Fan',  part: 'Stock cooler',                    priceUSD: 0 },
+        ],
+        notes: 'Arc B580 gives 12 GB VRAM cheaply — critical for CP77 at high textures.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1620,
+        targets: '1440p 90 fps ultra · RT medium · DLSS Quality',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 7800X3D',              priceUSD: 380 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 CL30',             priceUSD: 130 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5070 12 GB',            priceUSD: 550 },
+          { label: 'SSD',  part: '2 TB WD SN850X NVMe',              priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 55 },
+        ],
+        notes: '7800X3D is the CP77 CPU sweet spot — the X3D cache wins 1% lows in Night City crowds.',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2680,
+        targets: '4K 60 fps with full path tracing + DLSS 4 frame generation',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9800X3D',              priceUSD: 480 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5080 16 GB',            priceUSD: 1100 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM1000e (1000W Gold)',     priceUSD: 145 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 360',    priceUSD: 130 },
+          { label: 'Misc', part: '4K 240Hz OLED monitor optional',   priceUSD: 130 },
+        ],
+        notes: 'CP77 with path tracing is the showcase title for this tier — nothing else lights up an RTX 5080 like it.',
+      },
+    ],
+    completion: {
+      mainStory: '25h',
+      mainAndExtras: '63h',
+      completionist: '100h',
+      notes: [
+        'Add ~30 hours for Phantom Liberty main story · 40 hours for PL completionist.',
+        'Romance arcs add roughly 5 hours each · most permanently lock at endgame.',
+      ],
+    },
+  },
 };
 
 export default content;

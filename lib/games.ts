@@ -40,7 +40,7 @@ export type Game = {
 const OVERVIEW_ONLY: CategoryId[] = ['overview', 'screenshots'];
 const OVERVIEW_EDITIONS: CategoryId[] = ['overview', 'editions', 'screenshots'];
 const DEEP_ALL: CategoryId[] = [
-  'overview', 'news', 'features', 'editions', 'screenshots',
+  'overview', 'news', 'features', 'editions', 'screenshots', 'requirements',
   'map', 'vehicles', 'weapons', 'characters', 'animals',
   'missions', 'activities', 'properties',
   'cheats-ps5', 'cheats-xbox', 'cheats-pc',
@@ -286,9 +286,9 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'primary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters', 'weapons',
-      'map', 'news', 'features', 'missions', 'activities',
-      'artworks', 'videos', 'soundtrack',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
+      'weapons', 'map', 'news', 'features', 'missions',
+      'activities', 'artworks', 'videos', 'soundtrack',
     ],
   },
   {
@@ -330,9 +330,9 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'primary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters', 'weapons',
-      'vehicles', 'map', 'news', 'features', 'missions',
-      'activities', 'properties', 'artworks', 'videos', 'soundtrack',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
+      'weapons', 'vehicles', 'map', 'news', 'features',
+      'missions', 'activities', 'properties', 'artworks', 'videos', 'soundtrack',
     ],
   },
   {
@@ -436,9 +436,9 @@ const released: Game[] = [
     isUpcoming: false,
     tier: 'secondary',
     categoriesEnabled: [
-      'overview', 'editions', 'screenshots', 'characters', 'weapons',
-      'map', 'news', 'features', 'missions', 'activities',
-      'artworks', 'videos', 'soundtrack',
+      'overview', 'editions', 'screenshots', 'requirements', 'characters',
+      'weapons', 'map', 'news', 'features', 'missions',
+      'activities', 'artworks', 'videos', 'soundtrack',
     ],
   },
   {

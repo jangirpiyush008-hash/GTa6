@@ -355,6 +355,110 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'Elden Ring is famously tightly optimised — the 60 fps cap on console plus FromSoft\'s engine choices keep hardware demands low. The Shadow of the Erdtree DLC raised the VRAM bar slightly but didn\'t move the floor.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS4 · PS4 Pro · PS5 (native upgrade · free for owners)',
+        best: 'PS5: 1440p upscaled to 4K · capped 60 fps · ray tracing off',
+        storage: '60 GB',
+        notes: [
+          'PS5 Pro patch added April 2025 · enables stable 60 fps + RT mode.',
+          'No native cap-removal · 60 fps locked even on Pro hardware.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox One · Xbox Series X|S (native)',
+        best: 'Xbox Series X: 4K 60 fps with HDR · ray tracing toggle in DLC',
+        storage: '60 GB',
+        notes: [
+          'Series S: 1440p 60 fps · matches base PS5 fidelity.',
+          'No VRR support on Xbox One / Series — locked 60.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 64-bit',
+      cpu: 'Intel Core i5-8400 · AMD Ryzen 3 3300X',
+      gpu: 'NVIDIA GTX 1060 3 GB · AMD RX 580 4 GB',
+      ram: '12 GB',
+      vram: '3 GB',
+      storage: '60 GB SSD',
+      expectedFps: '1080p 30 fps low (without DLC)',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i7-8700K · AMD Ryzen 5 3600X',
+      gpu: 'NVIDIA GTX 1070 8 GB · AMD RX Vega 56 8 GB',
+      ram: '16 GB',
+      vram: '8 GB',
+      storage: '60 GB SSD',
+      expectedFps: '1440p 60 fps high · capped engine 60',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 780,
+        targets: 'Locked 60 fps at 1440p ultra · uncapped via mod = 100+ fps',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '16 GB DDR5-5200 (2×8)',           priceUSD: 60 },
+          { label: 'GPU',  part: 'AMD RX 7600 8 GB',                priceUSD: 230 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair CV650 (650W Bronze)',     priceUSD: 70 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 50 },
+        ],
+        notes: 'Even an RX 6600 (~$200) hits 60 fps · this is over-spec for the base game.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1180,
+        targets: '1440p 60 fps ultra · Shadow of the Erdtree at max settings',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',                priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 (2×16)',           priceUSD: 120 },
+          { label: 'GPU',  part: 'AMD RX 7700 XT 12 GB',             priceUSD: 420 },
+          { label: 'SSD',  part: '1 TB WD SN850X NVMe',              priceUSD: 90 },
+          { label: 'PSU',  part: 'Corsair RM650e (650W Gold)',       priceUSD: 80 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Stock cooler',                     priceUSD: 0 },
+        ],
+        notes: 'Plays SOTE\'s Scadu region at 60 fps even in Bonny Village (worst frame-pacing area).',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2050,
+        targets: '4K 120 fps via uncapped mod · RT on + DLAA · all-future-DLC ready',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9700X',                priceUSD: 380 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5070 Ti 16 GB',         priceUSD: 750 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 280',    priceUSD: 110 },
+        ],
+        notes: 'Overkill — the engine caps at 60 fps natively · only the unlock mod justifies this.',
+      },
+    ],
+    completion: {
+      mainStory: '60h',
+      mainAndExtras: '97h',
+      completionist: '130h',
+      notes: [
+        'Shadow of the Erdtree DLC adds ~40h main / 60h completionist on top.',
+        'New Game+ cycles add no time per run but Achievements need 3 NG+ for all endings.',
+      ],
+    },
+  },
 };
 
 export default content;

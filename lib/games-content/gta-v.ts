@@ -587,6 +587,111 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'GTA V is the easiest PC build target in the catalogue — twelve years old, optimised through 6 console generations, and runs on hardware most users already own. The 2022 native PS5 / Xbox Series re-release adds 4K + 60 fps + ray-traced reflections.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS3 · PS4 · PS5 (native) · PS5 Pro (enhanced)',
+        best: 'PS5 Pro: 4K 60 fps with ray-traced reflections enabled',
+        storage: '94 GB (digital)',
+        notes: [
+          'PS3 version no longer receives Online updates · single-player only.',
+          'PS5 Pro patch adds dedicated Pro fidelity mode (Nov 2024).',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox 360 · Xbox One · Xbox Series X|S (native)',
+        best: 'Xbox Series X: 4K 60 fps with RT reflections in fidelity mode',
+        storage: '94 GB',
+        notes: [
+          'Series S limited to 1080p 60 fps · Series X gets 4K.',
+          'Backward-compatible Xbox 360 / Xbox One discs still work.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core 2 Quad Q6600 @ 2.4 GHz · AMD Phenom 9850',
+      gpu: 'NVIDIA 9800 GT (1 GB) · AMD HD 4870',
+      ram: '4 GB',
+      vram: '1 GB',
+      storage: '94 GB HDD',
+      expectedFps: '720p 30 fps low',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel i5-3470 · AMD FX-8350',
+      gpu: 'NVIDIA GTX 660 (2 GB) · AMD HD 7870',
+      ram: '8 GB',
+      vram: '2 GB',
+      storage: '94 GB SSD strongly preferred',
+      expectedFps: '1080p 60 fps high',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 720,
+        targets: 'GTA V at 1080p 60 fps very-high · plays GTA Online comfortably',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '16 GB DDR5-5200 (2×8)',           priceUSD: 60 },
+          { label: 'GPU',  part: 'AMD RX 7600 8 GB',                priceUSD: 230 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair CV650 (650W Bronze)',     priceUSD: 70 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 50 },
+          { label: 'Fan',  part: 'Stock cooler (Wraith)',           priceUSD: 0 },
+        ],
+        notes: 'Overkill for GTA V alone — comfortably runs every modern game at 1080p.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1300,
+        targets: 'GTA V at 1440p 120 fps ultra · ray-tracing reflections on',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',               priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 (2×16)',           priceUSD: 120 },
+          { label: 'GPU',  part: 'AMD RX 7700 XT 12 GB',             priceUSD: 420 },
+          { label: 'SSD',  part: '1 TB WD SN850X NVMe',              priceUSD: 90 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 50 },
+        ],
+        notes: 'Hits 144 fps in GTA Online lobbies · headroom for GTA VI in 2026.',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2350,
+        targets: '4K 144 fps with everything on · GTA Online RT max',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9700X',                priceUSD: 380 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5080 16 GB',            priceUSD: 1100 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM1000e (1000W Gold)',     priceUSD: 145 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 360',    priceUSD: 130 },
+        ],
+        notes: 'Future-proofed for GTA VI ultra · 4K 60 fps confirmed-target for VI on PC.',
+      },
+    ],
+    completion: {
+      mainStory: '32h',
+      mainAndExtras: '49h',
+      completionist: '82h',
+      notes: [
+        'Completionist time covers single-player only (no GTA Online).',
+        'GTA Online is effectively infinite · 100s of hours of heists, races, businesses.',
+      ],
+    },
+  },
 };
 
 export default content;

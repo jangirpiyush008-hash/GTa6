@@ -398,6 +398,111 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'Diablo IV is always-online · the spec sheet is mostly about hitting smooth 60 fps in dense Helltides + Pit climbs, not graphical ceiling. The Vessel of Hatred expansion didn\'t move the requirements floor.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS4 · PS4 Pro · PS5 (native) · PS5 Pro (enhanced)',
+        best: 'PS5 Pro: 4K 60 fps with PSSR upscaling',
+        storage: '90 GB (with VoH expansion)',
+        notes: [
+          'Cross-progression on by default · use Battle.net to sync.',
+          'Couch co-op for 2 supported on all consoles.',
+          'Always-online · single-player still needs an internet connection.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox One · Xbox Series X|S (native)',
+        best: 'Xbox Series X: 4K 60 fps · Series S: 1440p 60 fps',
+        storage: '90 GB',
+        notes: [
+          'On Xbox Game Pass since March 2024.',
+          'Vessel of Hatred is included with Game Pass Ultimate.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 64-bit',
+      cpu: 'Intel Core i5-2500K · AMD FX-8350',
+      gpu: 'NVIDIA GTX 660 2 GB · AMD HD 7950 3 GB · Intel Arc A380',
+      ram: '8 GB',
+      vram: '2 GB',
+      storage: '90 GB · SSD strongly recommended',
+      expectedFps: '1080p 30 fps low',
+    },
+    pcRecommended: {
+      os: 'Windows 10 / 11 64-bit',
+      cpu: 'Intel Core i5-4670K · AMD Ryzen 5 1600',
+      gpu: 'NVIDIA GTX 970 4 GB · AMD RX 470 4 GB',
+      ram: '16 GB',
+      vram: '4 GB',
+      storage: '90 GB SSD',
+      expectedFps: '1080p 60 fps high',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 730,
+        targets: '1080p 60 fps high · couch co-op via Steam Big Picture',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '16 GB DDR5-5200 (2×8)',           priceUSD: 60 },
+          { label: 'GPU',  part: 'AMD RX 7600 8 GB',                priceUSD: 230 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair CV650 (650W Bronze)',     priceUSD: 70 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 50 },
+        ],
+        notes: 'D4 isn\'t demanding · any 2023+ GPU clears 60 fps high.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1280,
+        targets: '1440p 120 fps ultra · 8-player Pit runs without stuttering',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',                priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 (2×16)',           priceUSD: 120 },
+          { label: 'GPU',  part: 'AMD RX 7700 XT 12 GB',             priceUSD: 420 },
+          { label: 'SSD',  part: '1 TB WD SN850X NVMe',              priceUSD: 90 },
+          { label: 'PSU',  part: 'Corsair RM650e (650W Gold)',       priceUSD: 80 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 50 },
+        ],
+        notes: '1440p ultrawide is the optimal D4 viewport · this build hits 90+ fps there.',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2200,
+        targets: '4K 144 fps ultra · maxed shadows for late-game Spiritborn FX',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9700X',                priceUSD: 380 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5070 Ti 16 GB',         priceUSD: 750 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM850e (850W Gold)',       priceUSD: 120 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 280',    priceUSD: 110 },
+        ],
+        notes: 'Diablo IV doesn\'t need this · but futures-proofs you for any 2027 ARPG release.',
+      },
+    ],
+    completion: {
+      mainStory: '25h',
+      mainAndExtras: '45h',
+      completionist: '80h',
+      notes: [
+        'Numbers are campaign + Vessel of Hatred only · endgame loot grind is effectively infinite.',
+        'Each new season adds ~15 hours of seasonal mechanic content.',
+      ],
+    },
+  },
 };
 
 export default content;

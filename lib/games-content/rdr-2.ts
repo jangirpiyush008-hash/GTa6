@@ -617,6 +617,110 @@ const content: GameContent = {
       },
     ],
   },
+
+  /* ───────── REQUIREMENTS (consoles + PC builds + completion time) ───────── */
+  requirements: {
+    intro:
+      'RDR 2 was the most demanding game on the planet at launch (Oct 2018) and is still GPU-heavy 8 years on. There is no native PS5 / Xbox Series build — backward compatibility delivers 60 fps via patches but not the full ray-traced glow-up GTA V got.',
+    consoles: [
+      {
+        console: 'PlayStation',
+        versions: 'PS4 · PS4 Pro · PS5 (via backward compatibility)',
+        best: 'PS5: Original PS4 Pro build at locked 60 fps via BC + load-time SSD boost',
+        storage: '99 GB',
+        notes: [
+          'No native PS5 build · runs the PS4 Pro version with enhancements.',
+          'PS5 Pro patch added free 60 fps mode in Dec 2024.',
+        ],
+      },
+      {
+        console: 'Xbox',
+        versions: 'Xbox One · Xbox One X · Xbox Series X|S (via BC + FPS Boost)',
+        best: 'Xbox Series X: Xbox One X build at native 4K + FPS Boost to 60 fps',
+        storage: '99 GB',
+        notes: [
+          'Xbox Series S limited to FPS Boost at 1080p.',
+          'Originally a Rockstar Launcher / Epic exclusive on PC before Steam release in Dec 2019.',
+        ],
+      },
+    ],
+    pcMin: {
+      os: 'Windows 10 64-bit',
+      cpu: 'Intel Core i5-2500K · AMD FX-6300',
+      gpu: 'NVIDIA GTX 770 (2 GB) · AMD R9 280 (3 GB)',
+      ram: '8 GB',
+      vram: '2 GB',
+      storage: '150 GB HDD',
+      expectedFps: '1080p 30 fps low (don\'t)',
+    },
+    pcRecommended: {
+      os: 'Windows 10 64-bit',
+      cpu: 'Intel i7-4770K · AMD Ryzen 5 1500X',
+      gpu: 'NVIDIA GTX 1060 (6 GB) · AMD RX 480 (4 GB)',
+      ram: '12 GB',
+      vram: '6 GB',
+      storage: '150 GB SSD strongly recommended',
+      expectedFps: '1440p 60 fps high',
+    },
+    builds: [
+      {
+        tier: 'Budget',
+        totalUSD: 920,
+        targets: 'RDR 2 at 1080p 60 fps medium-high · 1440p 40 fps medium',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 7600',                priceUSD: 180 },
+          { label: 'Mobo', part: 'ASRock B650M-HDV',                priceUSD: 110 },
+          { label: 'RAM',  part: '32 GB DDR5-5200 (2×16)',          priceUSD: 110 },
+          { label: 'GPU',  part: 'AMD RX 7600 XT 16 GB',            priceUSD: 320 },
+          { label: 'SSD',  part: '1 TB Crucial P3 Plus NVMe',       priceUSD: 70 },
+          { label: 'PSU',  part: 'Corsair RM650e (650W Gold)',      priceUSD: 80 },
+          { label: 'Case', part: 'Cooler Master MasterBox Q300L',   priceUSD: 50 },
+        ],
+        notes: '16 GB VRAM on the 7600 XT is the key — RDR 2 punishes any GPU under 8 GB at high settings.',
+      },
+      {
+        tier: 'Recommended',
+        totalUSD: 1480,
+        targets: '1440p 90 fps ultra · zero pop-in · everything maxed except MSAA',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 5 9600X',                priceUSD: 280 },
+          { label: 'Mobo', part: 'MSI B650 Tomahawk',                priceUSD: 170 },
+          { label: 'RAM',  part: '32 GB DDR5-6000 (2×16)',           priceUSD: 120 },
+          { label: 'GPU',  part: 'AMD RX 7800 XT 16 GB',             priceUSD: 500 },
+          { label: 'SSD',  part: '2 TB WD SN850X NVMe',              priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM750e (750W Gold)',       priceUSD: 95 },
+          { label: 'Case', part: 'Fractal Pop Air',                  priceUSD: 75 },
+          { label: 'Fan',  part: 'Thermalright Peerless Assassin',   priceUSD: 50 },
+        ],
+        notes: 'Sweet spot for RDR 2 + ready for any 2026 release.',
+      },
+      {
+        tier: 'High-end',
+        totalUSD: 2480,
+        targets: '4K 60 fps ultra + DLAA · MSAA 2x · the cinematic camera look',
+        parts: [
+          { label: 'CPU',  part: 'AMD Ryzen 7 9700X',                priceUSD: 380 },
+          { label: 'Mobo', part: 'ASUS ROG Strix X870-A',            priceUSD: 290 },
+          { label: 'RAM',  part: '32 GB DDR5-6400 CL30',             priceUSD: 140 },
+          { label: 'GPU',  part: 'NVIDIA RTX 5080 16 GB',            priceUSD: 1100 },
+          { label: 'SSD',  part: '2 TB Samsung 990 Pro NVMe',        priceUSD: 165 },
+          { label: 'PSU',  part: 'Corsair RM1000e (1000W Gold)',     priceUSD: 145 },
+          { label: 'Case', part: 'Lian Li Lancool 207',              priceUSD: 100 },
+          { label: 'Fan',  part: 'Arctic Liquid Freezer III 360',    priceUSD: 130 },
+        ],
+        notes: 'Plays GTA VI at 4K too — same engine generation.',
+      },
+    ],
+    completion: {
+      mainStory: '50h',
+      mainAndExtras: '82h',
+      completionist: '175h',
+      notes: [
+        'Completionist includes the 100% checklist · 30 fossils, 50 cigarette cards, 16 legendary animals.',
+        'Red Dead Online adds another 100+ hours of activity if you want to grind.',
+      ],
+    },
+  },
 };
 
 export default content;

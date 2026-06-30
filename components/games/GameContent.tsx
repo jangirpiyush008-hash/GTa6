@@ -1,7 +1,7 @@
 import type { Game } from '@/lib/games';
 import type { CategoryId } from '@/lib/categories';
 import type { GameContent } from '@/lib/games-content/types';
-import { Check, Star, Calendar, ExternalLink, PlayCircle, Image as ImageIcon } from 'lucide-react';
+import { Check, Star, Calendar, ExternalLink, PlayCircle, Image as ImageIcon, Cpu, MemoryStick, HardDrive, MonitorPlay, Clock, Gamepad2 } from 'lucide-react';
 import TrackPlayer from './TrackPlayer';
 
 /**
@@ -53,6 +53,8 @@ export default function GameContentView({
       return content.videos ? <VideosView game={game} data={content.videos} /> : null;
     case 'soundtrack':
       return content.soundtrack ? <SoundtrackView game={game} data={content.soundtrack} /> : null;
+    case 'requirements':
+      return content.requirements ? <RequirementsView game={game} data={content.requirements} /> : null;
     default:
       return null;
   }
@@ -433,6 +435,178 @@ function SoundtrackView({ game, data }: { game: Game; data: NonNullable<GameCont
           </div>
         ))}
       </div>
+    </section>
+  );
+}
+
+/* ───────────── REQUIREMENTS (consoles + PC + builds + completion time) ───────────── */
+function RequirementsView({ game, data }: { game: Game; data: NonNullable<GameContent['requirements']> }) {
+  const tierColor = (i: number) =>
+    i === 0 ? '#22c55e' : i === 1 ? game.accent : '#FFD700';
+
+  return (
+    <section className="space-y-10">
+      <Intro>{data.intro}</Intro>
+
+      {/* ─ Consoles ─ */}
+      <div>
+        <h3 className="display text-xl mb-3" style={{ color: game.accent }}>
+          <span className="inline-flex items-center gap-2">
+            <Gamepad2 className="h-5 w-5" />
+            Console requirements
+          </span>
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {data.consoles.map((c) => (
+            <div key={c.console} className="glass rounded-xl p-5 border" style={{ borderColor: `${game.accent}33` }}>
+              <div className="flex items-center justify-between mb-2">
+                <div className="display text-lg text-white">{c.console}</div>
+                <div className="text-[10px] uppercase tracking-widest text-white/55">
+                  <HardDrive className="h-3 w-3 inline mr-1" />{c.storage}
+                </div>
+              </div>
+              <div className="text-sm text-white/85 leading-snug">{c.versions}</div>
+              {c.best && (
+                <div className="mt-2 text-xs px-2 py-1 rounded inline-block" style={{ background: `${game.accent}1f`, color: game.accent }}>
+                  ★ {c.best}
+                </div>
+              )}
+              {c.notes && c.notes.length > 0 && (
+                <ul className="mt-3 space-y-1">
+                  {c.notes.map((n, i) => (
+                    <li key={i} className="text-xs text-white/55 leading-snug">— {n}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ─ PC min vs recommended ─ */}
+      <div>
+        <h3 className="display text-xl mb-3" style={{ color: game.accent }}>
+          <span className="inline-flex items-center gap-2">
+            <MonitorPlay className="h-5 w-5" />
+            PC system requirements
+          </span>
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            { label: 'MINIMUM', data: data.pcMin, accent: '#9ca3af' },
+            { label: 'RECOMMENDED', data: data.pcRecommended, accent: game.accent },
+          ].map((b) => (
+            <div key={b.label} className="glass rounded-xl p-5 border" style={{ borderColor: `${b.accent}55` }}>
+              <div className="text-[10px] uppercase tracking-[0.3em] font-bold mb-2" style={{ color: b.accent }}>
+                {b.label}
+              </div>
+              {b.data.expectedFps && (
+                <div className="text-sm text-white/85 mb-3">
+                  Target: <span className="text-white font-semibold">{b.data.expectedFps}</span>
+                </div>
+              )}
+              <dl className="space-y-1.5 text-sm">
+                {[
+                  ['OS', b.data.os],
+                  ['CPU', b.data.cpu],
+                  ['GPU', b.data.gpu],
+                  ['RAM', b.data.ram],
+                  ['VRAM', b.data.vram],
+                  ['Storage', b.data.storage],
+                ].filter(([, v]) => v).map(([k, v]) => (
+                  <div key={k as string} className="flex gap-3">
+                    <dt className="text-white/45 w-16 shrink-0 text-xs uppercase tracking-widest pt-0.5">{k}</dt>
+                    <dd className="text-white/85">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+              {b.data.notes && (
+                <p className="mt-3 text-xs text-white/55 leading-snug">— {b.data.notes}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ─ Build-your-PC tiers ─ */}
+      <div>
+        <h3 className="display text-xl mb-1" style={{ color: game.accent }}>
+          <span className="inline-flex items-center gap-2">
+            <Cpu className="h-5 w-5" />
+            Build a PC for this game
+          </span>
+        </h3>
+        <p className="text-sm text-white/55 mb-5 leading-snug">
+          Picked-and-priced builds at three tiers · all prices USD · mid-2026 retail · swap parts to match your budget.
+        </p>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          {data.builds.map((b, i) => {
+            const c = tierColor(i);
+            return (
+              <div key={b.tier} className="glass rounded-xl p-5 border relative" style={{ borderColor: `${c}55` }}>
+                <div className="flex items-baseline justify-between mb-1">
+                  <div className="display text-lg" style={{ color: c }}>{b.tier}</div>
+                  <div className="display text-3xl text-white">${b.totalUSD.toLocaleString()}</div>
+                </div>
+                <div className="text-xs text-white/65 mb-4">{b.targets}</div>
+                <ul className="space-y-1.5 text-sm">
+                  {b.parts.map((p) => (
+                    <li key={p.label} className="flex items-start gap-2.5 border-b border-white/5 pb-1.5 last:border-0">
+                      <span className="text-[10px] uppercase tracking-widest text-white/45 w-12 shrink-0 pt-1">{p.label}</span>
+                      <span className="flex-1 text-white/85">{p.part}</span>
+                      <span className="text-white/70 tabular-nums shrink-0">${p.priceUSD}</span>
+                    </li>
+                  ))}
+                </ul>
+                {b.notes && (
+                  <p className="mt-3 text-xs text-white/55 leading-snug">— {b.notes}</p>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* ─ Completion time ─ */}
+      <div>
+        <h3 className="display text-xl mb-3" style={{ color: game.accent }}>
+          <span className="inline-flex items-center gap-2">
+            <Clock className="h-5 w-5" />
+            How long to beat
+          </span>
+        </h3>
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          {[
+            { label: 'Main story', value: data.completion.mainStory },
+            { label: 'Main + extras', value: data.completion.mainAndExtras },
+            { label: 'Completionist', value: data.completion.completionist },
+          ].map((c) => (
+            <div key={c.label} className="glass rounded-xl p-5 text-center border" style={{ borderColor: `${game.accent}33` }}>
+              <div className="text-[10px] uppercase tracking-[0.3em] text-white/45">{c.label}</div>
+              <div className="display text-4xl text-white mt-2" style={{ textShadow: `0 0 24px ${game.accent}66` }}>
+                {c.value}
+              </div>
+            </div>
+          ))}
+        </div>
+        {data.completion.notes && data.completion.notes.length > 0 && (
+          <ul className="mt-3 space-y-1">
+            {data.completion.notes.map((n, i) => (
+              <li key={i} className="text-xs text-white/55 leading-snug">— {n}</li>
+            ))}
+          </ul>
+        )}
+        <div className="mt-4 text-[11px] text-white/35">
+          Times are platform-agnostic · same campaign across PS / Xbox / PC · console load times shave a few minutes total.
+        </div>
+      </div>
+
+      {data.notes && data.notes.length > 0 && (
+        <div className="glass rounded-xl p-5 text-sm text-white/70 space-y-2">
+          <div className="text-xs uppercase tracking-[0.25em] text-white/45 mb-1">Worth knowing</div>
+          {data.notes.map((n, i) => <p key={i}>— {n}</p>)}
+        </div>
+      )}
     </section>
   );
 }
