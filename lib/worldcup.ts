@@ -151,8 +151,146 @@ function isToday(iso: string, today = new Date()): boolean {
   );
 }
 
+/* ─────────────── ESPN public API (no key required) ─────────────── */
+
+type ESPNEvent = {
+  id: string;
+  date: string;
+  name: string;
+  status: { type: { name: string; description: string; state: string; completed?: boolean }; displayClock?: string };
+  competitions: Array<{
+    competitors: Array<{
+      homeAway: 'home' | 'away';
+      score?: string;
+      team: { displayName: string; abbreviation?: string; logo?: string };
+    }>;
+  }>;
+};
+type ESPNScoreboard = { events?: ESPNEvent[] };
+
+type ESPNStanding = {
+  team: { displayName: string; abbreviation?: string; logo?: string };
+  stats: Array<{ name: string; value?: number; displayValue?: string }>;
+  note?: { rank?: number };
+};
+type ESPNStandingsResp = {
+  children?: Array<{
+    name: string;
+    standings?: { entries?: ESPNStanding[] };
+  }>;
+};
+
+const ESPN_BASE = 'https://site.api.espn.com';
+const ESPN_BASE_V2 = 'https://site.api.espn.com/apis/v2';
+
+async function espnFetch<T>(url: string): Promise<T | null> {
+  try {
+    const res = await fetch(url, { next: { revalidate: TTL_SECONDS } });
+    if (!res.ok) return null;
+    return (await res.json()) as T;
+  } catch {
+    return null;
+  }
+}
+
+function espnStatusToWC(name: string): WCMatch['status'] {
+  switch (name) {
+    case 'STATUS_IN_PROGRESS':
+    case 'STATUS_FIRST_HALF':
+    case 'STATUS_SECOND_HALF':
+      return 'IN_PLAY';
+    case 'STATUS_HALFTIME':
+      return 'PAUSED';
+    case 'STATUS_FULL_TIME':
+    case 'STATUS_FINAL':
+      return 'FINISHED';
+    default:
+      return 'SCHEDULED';
+  }
+}
+
+function normalizeESPNEvent(e: ESPNEvent): WCMatch {
+  const comp = e.competitions[0];
+  const home = comp.competitors.find((c) => c.homeAway === 'home') ?? comp.competitors[0];
+  const away = comp.competitors.find((c) => c.homeAway === 'away') ?? comp.competitors[1];
+  const status = espnStatusToWC(e.status.type.name);
+  const scoreH = home.score != null ? Number(home.score) : null;
+  const scoreA = away.score != null ? Number(away.score) : null;
+  return {
+    id: e.id,
+    utcDate: e.date,
+    status,
+    homeTeam: { name: home.team.displayName, code: home.team.abbreviation, crest: home.team.logo },
+    awayTeam: { name: away.team.displayName, code: away.team.abbreviation, crest: away.team.logo },
+    score: status !== 'SCHEDULED' && (scoreH !== null || scoreA !== null)
+      ? { home: scoreH, away: scoreA }
+      : undefined,
+    minute: e.status.displayClock ? parseInt(e.status.displayClock) || null : null,
+  };
+}
+
+function readESPNStat(s: ESPNStanding, name: string): number {
+  const stat = s.stats.find((x) => x.name === name);
+  if (!stat) return 0;
+  if (typeof stat.value === 'number') return stat.value;
+  if (stat.displayValue) return Number(stat.displayValue) || 0;
+  return 0;
+}
+
+async function getESPNWorldCupData(): Promise<WCData | null> {
+  const [scoreboard, standings] = await Promise.all([
+    espnFetch<ESPNScoreboard>(`${ESPN_BASE}/apis/site/v2/sports/soccer/fifa.world/scoreboard`),
+    espnFetch<ESPNStandingsResp>(`${ESPN_BASE_V2}/sports/soccer/fifa.world/standings`),
+  ]);
+  if (!scoreboard && !standings) return null;
+
+  const matches = (scoreboard?.events ?? []).map(normalizeESPNEvent);
+  const todaysMatches = matches.filter((m) => isToday(m.utcDate));
+  const live = matches.find((m) => m.status === 'IN_PLAY' || m.status === 'PAUSED');
+  const nextScheduled = matches
+    .filter((m) => m.status === 'SCHEDULED' && new Date(m.utcDate).getTime() > Date.now())
+    .sort((a, b) => new Date(a.utcDate).getTime() - new Date(b.utcDate).getTime())[0];
+
+  const groups = GROUPS_2026.map((letter) => {
+    const groupName = `Group ${letter}`;
+    const entries =
+      standings?.children?.find((c) => c.name === groupName)?.standings?.entries ?? [];
+    return {
+      letter,
+      standings: entries.map((e, i) => ({
+        position: Math.round(readESPNStat(e, 'rank')) || i + 1,
+        team: {
+          name: e.team.displayName,
+          code: e.team.abbreviation,
+          crest: e.team.logo,
+        },
+        played: Math.round(readESPNStat(e, 'gamesPlayed')),
+        won: Math.round(readESPNStat(e, 'wins')),
+        draw: Math.round(readESPNStat(e, 'ties')),
+        lost: Math.round(readESPNStat(e, 'losses')),
+        gf: Math.round(readESPNStat(e, 'pointsFor')),
+        ga: Math.round(readESPNStat(e, 'pointsAgainst')),
+        points: Math.round(readESPNStat(e, 'points')),
+      })),
+    };
+  });
+
+  return {
+    source: 'live',
+    fetchedAt: new Date().toISOString(),
+    liveOrNext: live ?? nextScheduled ?? null,
+    todaysMatches,
+    groups,
+  };
+}
+
+/* ─────────────── Public entry — ESPN primary, football-data fallback ─────────────── */
 export async function getWorldCupData(): Promise<WCData> {
-  // Skip the fetch entirely when no key is configured — keeps the homepage fast
+  // Try ESPN first — no key required, public CDN
+  const espn = await getESPNWorldCupData();
+  if (espn) return espn;
+
+  // Fallback: football-data.org (paid / authenticated)
   if (!process.env.FOOTBALL_DATA_API_KEY) return staticFallback();
 
   const [matchesPayload, standingsPayload] = await Promise.all([
@@ -164,8 +302,6 @@ export async function getWorldCupData(): Promise<WCData> {
 
   const matches = (matchesPayload?.matches ?? []).map(normalizeMatch);
   const todaysMatches = matches.filter((m) => isToday(m.utcDate));
-
-  // Pick the most relevant "now" match: prefer LIVE/IN_PLAY, else next SCHEDULED
   const live = matches.find((m) => m.status === 'LIVE' || m.status === 'IN_PLAY');
   const nextScheduled = matches
     .filter((m) => m.status === 'SCHEDULED' && new Date(m.utcDate).getTime() > Date.now())
