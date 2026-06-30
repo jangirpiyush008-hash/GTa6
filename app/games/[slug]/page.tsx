@@ -9,6 +9,7 @@ import { games, gamesById, releasedGames, upcomingGames } from '@/lib/games';
 import { categories } from '@/lib/categories';
 import { getCover } from '@/lib/game-covers';
 import { ArrowRight, Calendar, Cpu, Tag, Lock } from 'lucide-react';
+import FIFAExtras from '@/components/games/FIFAExtras';
 
 export function generateStaticParams() {
   return games.map((g) => ({ slug: g.id }));
@@ -22,6 +23,37 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const game = gamesById[slug];
   if (!game) return { title: 'Game not found · GTAVI.GUIDE' };
+
+  // FIFA gets bigger SEO treatment — 2026 World Cup is the year's biggest search.
+  if (game.id === 'fifa') {
+    return {
+      title:
+        'EA Sports FC 26 + FIFA World Cup 2026 — Live Scores, Editions, Price · GTAVI.GUIDE',
+      description:
+        'EA Sports FC 26 (formerly FIFA) release date Sep 26, 2026 — Standard $69.99 / Ultimate $99.99. Cover stars Jude Bellingham + Lamine Yamal. Plus live FIFA World Cup 2026 standings: 48 teams, USA + Canada + Mexico, June 11 – July 19, 2026. Career Mode, Ultimate Team, Rush 5v5, FC IQ tactics.',
+      alternates: { canonical: `/games/fifa` },
+      keywords: [
+        'EA Sports FC 26', 'FC 26', 'FIFA 26', 'FC 26 release date',
+        'FC 26 Ultimate Edition', 'FC 26 cover', 'Jude Bellingham FC 26',
+        'Lamine Yamal FC 26', 'EA Sports FC 26 PS5', 'FC 26 Xbox Series',
+        'FC 26 PC requirements', 'FC 26 Switch 2',
+        'FIFA World Cup 2026', 'World Cup 2026 live scores',
+        'World Cup 2026 standings', '48 team World Cup',
+        'World Cup USA Canada Mexico', 'World Cup MetLife final',
+        'EA Sports FC vs FIFA', 'FC 25 vs FC 26',
+        'Career Mode FC 26', 'Ultimate Team FC 26', 'Rush 5v5',
+      ],
+      openGraph: {
+        title: 'EA Sports FC 26 + FIFA World Cup 2026 — Live Tracker',
+        description:
+          'Pre-order FC 26 + follow the 48-team World Cup live. Editions, requirements, cover stars, group standings updated every 5 minutes.',
+        url: '/games/fifa',
+        images: [{ url: '/images/games/fifa-cover.jpg' }],
+        type: 'website',
+      },
+    };
+  }
+
   return {
     title: `${game.title} · GTAVI.GUIDE`,
     description: `${game.tagline} ${game.blurb}`,
@@ -216,6 +248,9 @@ export default async function GameHubPage(props: {
           </div>
         </div>
       </section>
+
+      {/* FIFA-only: live World Cup section + real FC 25 screenshots + SEO promo */}
+      {game.id === 'fifa' && <FIFAExtras />}
 
       {/* CROSS-SELL: pre-order CTA back to GTA VI */}
       <section className="px-5 pb-16">
