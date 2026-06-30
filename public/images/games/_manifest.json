@@ -1,0 +1,172 @@
+{
+  "gta-v": {
+    "ok": true,
+    "file": "gta-v-cover.jpg",
+    "size": 81961,
+    "source": "steam:271590"
+  },
+  "rdr-2": {
+    "ok": true,
+    "file": "rdr-2-cover.jpg",
+    "size": 75653,
+    "source": "steam:1174180"
+  },
+  "elden-ring": {
+    "ok": true,
+    "file": "elden-ring-cover.jpg",
+    "size": 52021,
+    "source": "steam:1245620"
+  },
+  "baldurs-gate-3": {
+    "ok": true,
+    "file": "baldurs-gate-3-cover.jpg",
+    "size": 66971,
+    "source": "steam:1086940"
+  },
+  "cyberpunk-2077": {
+    "ok": true,
+    "file": "cyberpunk-2077-cover.jpg",
+    "size": 54176,
+    "source": "steam:1091500"
+  },
+  "hogwarts-legacy": {
+    "ok": true,
+    "file": "hogwarts-legacy-cover.jpg",
+    "size": 52260,
+    "source": "steam:990080"
+  },
+  "re4-remake": {
+    "ok": true,
+    "file": "re4-remake-cover.jpg",
+    "size": 34266,
+    "source": "steam:2050650"
+  },
+  "diablo-iv": {
+    "ok": true,
+    "file": "diablo-iv-cover.jpg",
+    "size": 56010,
+    "source": "steam:2344520"
+  },
+  "helldivers-2": {
+    "ok": true,
+    "file": "helldivers-2-cover.jpg",
+    "size": 66023,
+    "source": "steam:553850"
+  },
+  "black-myth-wukong": {
+    "ok": true,
+    "file": "black-myth-wukong-cover.jpg",
+    "size": 52678,
+    "source": "steam:2358720"
+  },
+  "ff7-rebirth": {
+    "ok": true,
+    "file": "ff7-rebirth-cover.jpg",
+    "size": 69183,
+    "source": "steam:2909400"
+  },
+  "cod-bo6": {
+    "ok": true,
+    "file": "cod-bo6-cover.jpg",
+    "size": 60485,
+    "source": "steam:2933620"
+  },
+  "tlou-2-remaster": {
+    "ok": true,
+    "file": "tlou-2-remaster-cover.jpg",
+    "size": 52522,
+    "source": "steam:2531310"
+  },
+  "alan-wake-2": {
+    "ok": false,
+    "error": "all Steam URLs failed"
+  },
+  "mk1": {
+    "ok": true,
+    "file": "mk1-cover.jpg",
+    "size": 56591,
+    "source": "steam:1971870"
+  },
+  "dragons-dogma-2": {
+    "ok": true,
+    "file": "dragons-dogma-2-cover.jpg",
+    "size": 66523,
+    "source": "steam:2054970"
+  },
+  "tekken-8": {
+    "ok": true,
+    "file": "tekken-8-cover.jpg",
+    "size": 62008,
+    "source": "steam:1778820"
+  },
+  "ac-shadows": {
+    "ok": true,
+    "file": "ac-shadows-cover.jpg",
+    "size": 63617,
+    "source": "steam:3159330"
+  },
+  "silksong": {
+    "ok": true,
+    "file": "silksong-cover.jpg",
+    "size": 56810,
+    "source": "steam:1030300"
+  },
+  "subnautica-2": {
+    "ok": true,
+    "file": "subnautica-2-cover.jpg",
+    "size": 33130,
+    "source": "steam:1408530"
+  },
+  "spider-man-2": {
+    "ok": true,
+    "file": "spider-man-2-cover.jpg",
+    "size": 39355,
+    "source": "steam:2231910"
+  },
+  "stellar-blade": {
+    "ok": true,
+    "file": "stellar-blade-cover.jpg",
+    "size": 68114,
+    "source": "steam:3489700"
+  },
+  "gta-vi": {
+    "ok": true,
+    "file": "gta-vi-cover.png",
+    "size": 48636,
+    "source": "wiki:Grand_Theft_Auto_VI.png"
+  },
+  "wolverine": {
+    "ok": true,
+    "file": "wolverine-cover.jpg",
+    "size": 55127,
+    "source": "wiki:Marvel's_Wolverine_cover_art.jpg"
+  },
+  "ghost-of-yotei": {
+    "ok": true,
+    "file": "ghost-of-yotei-cover.png",
+    "size": 199594,
+    "source": "wiki:Ghost_of_Yōtei_cover_art.png"
+  },
+  "metroid-prime-4": {
+    "ok": true,
+    "file": "metroid-prime-4-cover.png",
+    "size": 217693,
+    "source": "wiki:Metroid_Prime_4_Beyond_cover_art.png"
+  },
+  "fable": {
+    "ok": false,
+    "error": "no pageimage"
+  },
+  "resident-evil-9": {
+    "ok": false,
+    "error": "no pageimage"
+  },
+  "elder-scrolls-vi": {
+    "ok": false,
+    "error": "no pageimage"
+  },
+  "project-007": {
+    "ok": false,
+    "error": "no pageimage"
+  }
+}
