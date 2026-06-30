@@ -15,8 +15,8 @@ export type WCMatch = {
   id: string | number;
   utcDate: string;
   status: 'SCHEDULED' | 'LIVE' | 'IN_PLAY' | 'PAUSED' | 'FINISHED' | 'PLACEHOLDER';
-  homeTeam: { name: string; code?: string };
-  awayTeam: { name: string; code?: string };
+  homeTeam: { name: string; code?: string; crest?: string };
+  awayTeam: { name: string; code?: string; crest?: string };
   score?: { home: number | null; away: number | null };
   stage?: string;
   group?: string;
@@ -25,7 +25,7 @@ export type WCMatch = {
 
 export type WCStanding = {
   position: number;
-  team: { name: string; code?: string };
+  team: { name: string; code?: string; crest?: string };
   played: number;
   won: number;
   draw: number;
@@ -92,8 +92,8 @@ type FDMatch = {
   status: string;
   stage: string;
   group?: string;
-  homeTeam: { name: string; tla?: string };
-  awayTeam: { name: string; tla?: string };
+  homeTeam: { name: string; tla?: string; crest?: string };
+  awayTeam: { name: string; tla?: string; crest?: string };
   score?: { fullTime?: { home: number | null; away: number | null } };
   minute?: number | null;
 };
@@ -105,7 +105,7 @@ type FDStandings = {
     type: string;
     table: Array<{
       position: number;
-      team: { name: string; tla?: string };
+      team: { name: string; tla?: string; crest?: string };
       playedGames: number;
       won: number;
       draw: number;
@@ -122,8 +122,8 @@ function normalizeMatch(m: FDMatch): WCMatch {
     id: m.id,
     utcDate: m.utcDate,
     status: (m.status as WCMatch['status']) ?? 'SCHEDULED',
-    homeTeam: { name: m.homeTeam.name, code: m.homeTeam.tla },
-    awayTeam: { name: m.awayTeam.name, code: m.awayTeam.tla },
+    homeTeam: { name: m.homeTeam.name, code: m.homeTeam.tla, crest: m.homeTeam.crest },
+    awayTeam: { name: m.awayTeam.name, code: m.awayTeam.tla, crest: m.awayTeam.crest },
     score: m.score?.fullTime
       ? { home: m.score.fullTime.home, away: m.score.fullTime.away }
       : undefined,
@@ -131,6 +131,15 @@ function normalizeMatch(m: FDMatch): WCMatch {
     group: m.group,
     minute: m.minute,
   };
+}
+
+/** Match a standings group key to one of A..L, tolerating either
+ *  the new API format ("GROUP_A") or the older one ("Group A" / "A"). */
+function matchesGroupLetter(apiGroup: string | undefined, letter: string): boolean {
+  if (!apiGroup) return false;
+  const norm = apiGroup.toUpperCase().replace(/[^A-Z]/g, '');
+  // GROUP_A → GROUPA, "Group A" → GROUPA, "A" → A
+  return norm === `GROUP${letter}` || norm === letter;
 }
 
 function isToday(iso: string, today = new Date()): boolean {
@@ -164,14 +173,16 @@ export async function getWorldCupData(): Promise<WCData> {
 
   const groups = GROUPS_2026.map((letter) => {
     const table =
-      standingsPayload?.standings
-        .find((s) => s.group === `GROUP_${letter}` && s.type === 'TOTAL')
-        ?.table ?? [];
+      standingsPayload?.standings.find(
+        (s) =>
+          matchesGroupLetter(s.group, letter) &&
+          (s.type === 'TOTAL' || s.type === 'ALL' || s.type === 'OVERALL'),
+      )?.table ?? [];
     return {
       letter,
       standings: table.map((row) => ({
         position: row.position,
-        team: { name: row.team.name, code: row.team.tla },
+        team: { name: row.team.name, code: row.team.tla, crest: row.team.crest },
         played: row.playedGames,
         won: row.won,
         draw: row.draw,

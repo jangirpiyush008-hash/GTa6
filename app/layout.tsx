@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Bebas_Neue, Inter } from 'next/font/google';
 import './globals.css';
 import WorldCupWidget from '@/components/WorldCupWidget';
+import WelcomePopup from '@/components/WelcomePopup';
 import { getWorldCupData } from '@/lib/worldcup';
 
 const bebas = Bebas_Neue({
@@ -67,6 +68,7 @@ export default async function RootLayout({
       <body className="min-h-screen font-body antialiased">
         {children}
         <WorldCupWidget data={wcData} />
+        <WelcomePopup />
       </body>
     </html>
   );
